@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music Tracks</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 data-testid="tracks-header"><span class="note">🎵</span> Music Tracks</h1>
+      <div class="controls">
+        <input
+          type="text"
+          id="search-input"
+          data-testid="search-input"
+          placeholder="Search by title, artist, genre..."
+        />
+        <select id="sort-select" data-testid="sort-select">
+          <option value="">Sort by...</option>
+          <option value="title">Title</option>
+          <option value="artist">Artist</option>
+          <option value="genre">Genre</option>
+        </select>
+        <button id="create-track-button" data-testid="create-track-button">+ Create Track</button>
+        <button id="delete-selected-button" data-testid="delete-selected-button" class="danger-button">Delete Selected</button>
+      </div>
+    </header>
+
+    <ul id="track-list" class="track-list" data-testid="track-list"></ul>
+    <div id="pagination" class="pagination" data-testid="pagination"></div>
+
+    <div id="modal" class="modal hidden" data-testid="modal">
+      <form id="track-form" data-testid="track-form" class="form">
+        <input type="text" id="input-title" data-testid="input-title" placeholder="Track Title" required />
+        <input type="text" id="input-artist" data-testid="input-artist" placeholder="Artist Name" required />
+        <input type="text" id="input-album" data-testid="input-album" placeholder="Album" />
+        <input type="text" id="input-cover-image" data-testid="input-cover-image" placeholder="Cover Image URL" />
+
+        <div id="genre-tags" class="genre-tags" data-testid="genre-tags"></div>
+        <div class="genre-input-wrapper">
+          <input type="text" id="input-genre" data-testid="genre-selector" placeholder="Add genre..." />
+          <button type="button" id="add-genre" data-testid="add-genre-button">+</button>
+        </div>
+
+        <input type="file" id="input-audio" accept="audio/*" data-testid="input-audio" />
+
+        <div id="audio-preview-container" class="audio-preview hidden" data-testid="audio-preview-container">
+          <div class="audio-wrapper">
+            <audio id="audio-preview" class="audio-player" controls data-testid="audio-preview"></audio>
+          </div>
+          <button type="button" id="remove-audio" class="cancel-button" data-testid="remove-audio-button">Remove Audio</button>
+        </div>
+
+        <button type="submit" id="submit-button" data-testid="submit-button">Save Track</button>
+      </form>
+      <button type="button" onclick="closeModal()" class="cancel-button" data-testid="cancel-button">Cancel</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
